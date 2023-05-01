@@ -1,1 +1,6 @@
 *npm init
+
+*install node-fetch for call api
+
+*Json to GraphQL = Convert json to a graphql Schema:
+https://matheusr42.github.io/json-to-graphql-schema-online/

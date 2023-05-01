@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "nodemon": "2.0.22",
-    "graphql-yoga": "3.9.1"
+    "graphql-yoga": "3.9.1",
+    "node-fetch": "3.3.1"
   }
 }
