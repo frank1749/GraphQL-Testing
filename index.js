@@ -17,23 +17,38 @@ let clients = [
 ];
 
 //Custom Schema
+
 const typeDefinitions = `
     type Query {
     clients: [Client]
+    },
+    type Mutation {
+        addClient(name: String, lastName: String): Client
     },
     type Client{
         name: String,
         lastName: String
     }
 `;
-
 const resolvers = {
     Query: {
         clients: () => {
             return clients;
         }
+    },
+    Mutation: {
+        addClient: ( _, data ) => {
+            let newClient = {
+                'name' : data.name,
+                'lastName' : data.lastName
+            };
+            clients.push(newClient);
+            return newClient;
+        }
     }
 };
+
+//End Custom Schema
 
 const yoga = createYoga({
     schema: createSchema({
