@@ -3,22 +3,42 @@ import { createServer } from "node:http";
 
 let clients = [
     {
-        'name': 'Peter'
+        'name': 'Peter',
+        'lastName': 'Parker'
+    },
+    {
+        'name': 'Frank',
+        'lastName': 'Smith'
+    },
+    {
+        'name': 'Sarah',
+        'lastName': 'Connor'
     }
-]
+];
+
+//Custom Schema
+const typeDefinitions = `
+    type Query {
+    clients: [Client]
+    },
+    type Client{
+        name: String,
+        lastName: String
+    }
+`;
+
+const resolvers = {
+    Query: {
+        clients: () => {
+            return clients;
+        }
+    }
+};
 
 const yoga = createYoga({
     schema: createSchema({
-      typeDefs: /* GraphQL */ `
-        type Query {
-          serverStatus: String
-        }
-      `,
-      resolvers: {
-        Query: {
-            serverStatus: () => 'Working Ok!'
-        }
-      }
+      typeDefs: /* GraphQL */ typeDefinitions,
+      resolvers: resolvers
     })
   })
   
